@@ -6,6 +6,8 @@ import sys
 
 W_REPLY_TO_MISMATCH = 2
 
+W_IP_LINK = 3
+
 W_AUTH_FAIL = 2
 
 W_BRAND_MISMATCH = 3
@@ -17,7 +19,6 @@ SUSPICIOUS_TRESHOLD = 3
 W_PUNYCODE_LINK = 3
 
 W_KEYWORD = 1
-W_IP_LINK = 3
 
 scores = {}
 verdicts = []
