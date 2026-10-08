@@ -4,6 +4,21 @@ import re
 import os
 import sys
 
+W_REPLY_TO_MISMATCH = 2
+
+W_AUTH_FAIL = 2
+
+W_BRAND_MISMATCH = 3
+
+PHISHING_TRESHOLD = 5
+
+SUSPICIOUS_TRESHOLD = 3
+
+W_PUNYCODE_LINK = 3
+
+W_KEYWORD = 1
+W_IP_LINK = 3
+
 scores = {}
 verdicts = []
 
@@ -28,37 +43,37 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
         low = raw.lower()
         for kw in KEYWORDS:
             if kw in low:
-                s = s + 1
+                s = s + W_KEYWORD
         # links that look bad
         urls = re.findall("https?://[^\\s\"'<>]+", raw)
         for u in urls:
             if re.match("https?://[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+", u):
-                s = s + 3  # ip address url, very bad
+                s = s + W_IP_LINK  # ip address url, very bad
             if "xn--" in u:
-                s = s + 3
+                s = s + W_PUNYCODE_LINK
         # sender says paypal/microsoft/amazon but domain is weird
         if "paypal" in frm.lower() and "paypal.com" not in frm.lower():
-            s = s + 3
+            s = s + W_BRAND_MISMATCH
         if "microsoft" in frm.lower() and "microsoft.com" not in frm.lower():
-            s = s + 3
+            s = s + W_BRAND_MISMATCH
         if "amazon" in frm.lower() and "amazon.com" not in frm.lower():
-            s = s + 3
+            s = s + W_BRAND_MISMATCH
         if "spf=fail" in low or "dmarc=fail" in low:
-            s = s + 2
+            s = s + W_AUTH_FAIL
         # reply-to different from from
         try:
             rt = re.search("Reply-To: (.*)", raw).group(1)
             m1 = re.search("@([a-zA-Z0-9.-]+)", frm).group(1)
             m2 = re.search("@([a-zA-Z0-9.-]+)", rt).group(1)
             if m1 != m2:
-                s = s + 2
+                s = s + W_REPLY_TO_MISMATCH
         except:
             pass
         scores[fn] = s
-        if s >= 5:
+        if s >= PHISHING_TRESHOLD:
             verdicts.append((fn, "PHISHING", s))
             flagged.append(fn)
-        elif s >= 3:
+        elif s >= SUSPICIOUS_TRESHOLD:
             verdicts.append((fn, "suspicious", s))
         else:
             verdicts.append((fn, "ok", s))
@@ -71,7 +86,7 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
     print("flagged:", flagged)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        check_mail(sys.argv[1])
-    else:
-        check_mail()
+    if len(sys.argv) != 2:
+        print("You have to pass a folder as argument")
+        sys.exit(2)
+    check_mail(sys.argv[1])
