@@ -27,6 +27,10 @@ KEYWORDS = ["urgent", "verify", "suspended", "password", "expires", "act now",
             "congratulations", "winner", "claim", "immediately", "gift card"]
 
 def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagged=[]):
+
+    if flagged is None:
+        flagged = []
+
     files = os.listdir(folder)
     for fn in files:
         if not fn.endswith(".eml"):
