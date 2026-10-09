@@ -43,9 +43,24 @@ Settings come from environment variables or from a local `.env` file (copy
 
 ```bash
 docker compose build              # build the image from uv.lock
-docker compose run --rm triage    # triage the bundled samples; verdicts go to a volume
+docker compose run --rm triage    # (profile batch) triage the bundled samples; verdicts go to a volume
 docker compose run --rm triage    # run it again: the stored verdicts grow from 6 to 12
 ```
+
+## Run the API
+
+```bash
+uv run uvicorn heron.api:app --reload      # http://127.0.0.1:8000/docs
+# json.dumps turns the raw message into one valid JSON string
+python -c 'import json,sys; print(json.dumps({"raw_eml": open(sys.argv[1]).read()}))' \
+  data/samples/prize-scam.eml | curl -s -H 'content-type: application/json' -d @- localhost:8000/triage
+```
+
+Storage is injected: endpoints depend on the `VerdictRepository` port
+(`src/heron/storage.py`); with `HERON_DB` set they get the SQLite adapter
+`VerdictStore`. Errors are RFC 9457 problem details (`application/problem+json`).
+In a container: `docker compose up api`; the CLI service is `docker compose run --rm triage`
+(profile `batch`).
 
 ## Status
 
@@ -55,4 +70,5 @@ reference built from the docstrings by Sphinx
 (`uv run sphinx-build -W docs docs/_build`), and tested
 with pytest and Hypothesis (unit, integration and property-based tests). CI
 (GitHub Actions) checks every pull request, publishes a release for each
-version tag and pushes the container image to GHCR.
+version tag and pushes the container image to GHCR. A FastAPI service exposes
+the engine over HTTP (ADR 0001 in `docs/adr/`).

@@ -4,6 +4,14 @@ heron package
 Submodules
 ----------
 
+heron.api module
+----------------
+
+.. automodule:: heron.api
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 heron.cli module
 ----------------
 

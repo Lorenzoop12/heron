@@ -8,12 +8,12 @@ WORKDIR /app
 
 # 1) the dependencies only: this layer is rebuilt only when pyproject.toml or uv.lock change
 COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-dev --no-install-project
+RUN uv sync --frozen --no-dev --extra api --no-install-project
 
 # 2) the project itself, which changes more often
 COPY README.md LICENSE ./
 COPY src ./src
-RUN uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev --extra api
 COPY data/samples ./data/samples
 
 # 3) drop root: a user that owns only the data folder, where the verdicts go

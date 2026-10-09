@@ -1,6 +1,6 @@
 [project]
 name = "heron"
-version = "0.5.1"
+version = "0.6.0"
 description = "Phishing email triage: parse .eml files, extract indicators, produce a verdict"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -10,8 +10,12 @@ dependencies = ["pydantic-settings>=2.10", "rapidfuzz>=3.14"]  # typed settings;
 [project.scripts]
 heron = "heron.cli:main"
 
+[project.optional-dependencies]  # extras, for users of the package
+api = ["fastapi", "uvicorn"]
+
 [dependency-groups]  # developer tools: never published; `uv sync` installs them
 dev = [
+  "fastapi", "uvicorn", "httpx",
   "ruff", "mypy", "pre-commit", "sphinx", "sphinx-rtd-theme",
   "pytest", "pytest-cov", "diff-cover", "hypothesis",
 ]
@@ -40,6 +44,7 @@ files = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+filterwarnings = ["ignore:Using `httpx` with `starlette.testclient` is deprecated"]
 
 [tool.coverage.run]
 source = ["heron"]

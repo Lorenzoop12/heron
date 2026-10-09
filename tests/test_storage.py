@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from heron.cli import main
@@ -23,4 +24,12 @@ def test_cli_stores_every_verdict(tmp_path: Path) -> None:
     assert main([str(SAMPLES), "--db", str(db)]) == 0
     store = VerdictStore(db)
     assert (store.count(), store.count(verdict="phishing")) == (12, 4)
+    store.close()
+
+
+def test_the_store_works_from_another_thread(tmp_path: Path) -> None:
+    # FastAPI may open the store in one worker thread and use it in another
+    store = VerdictStore(tmp_path / "v.db")
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        assert pool.submit(store.count).result() == 0
     store.close()

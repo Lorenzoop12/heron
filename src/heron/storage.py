@@ -4,6 +4,7 @@ import json
 import sqlite3
 from collections.abc import Iterable
 from pathlib import Path
+from typing import Protocol
 
 from heron.models import TriageResult
 
@@ -19,11 +20,21 @@ CREATE TABLE IF NOT EXISTS verdicts (
 """
 
 
+class VerdictRepository(Protocol):
+    """The port: what the application needs from a verdict store."""
+
+    def save(self, results: Iterable[TriageResult]) -> int: ...
+
+    def count(self, verdict: str | None = None) -> int: ...
+
+
 class VerdictStore:
-    """Save triage results and count them."""
+    """The SQLite adapter for :class:`VerdictRepository`."""
 
     def __init__(self, path: str | Path) -> None:
-        self._conn = sqlite3.connect(path)
+        # FastAPI may open the store in one worker thread and use or close it in another.
+        # Safe here: each request gets its own store and uses it sequentially.
+        self._conn = sqlite3.connect(path, check_same_thread=False)
         self._conn.execute(_SCHEMA)
 
     def save(self, results: Iterable[TriageResult]) -> int:

@@ -1,9 +1,29 @@
 services:
-  triage:
-    # `docker compose build` builds the image here; `docker compose pull` fetches the
-    # published one. CI publishes ghcr.io/<owner>/<repo>: set HERON_IMAGE in .env.
-    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.5.1}
+  api:
+    # `docker compose up api` serves the API on http://localhost:8000 (docs: /docs).
+    # `docker compose pull` fetches the published image; set HERON_IMAGE in .env.
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.6.0}
     build: .
+    entrypoint: ["uvicorn", "heron.api:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: []
+    ports:
+      - "8000:8000"
+    healthcheck:  # docker marks the container unhealthy if /health stops answering
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - verdicts:/data
+    environment:
+      HERON_LOG_LEVEL: INFO
+
+  triage:
+    # the CLI on the bundled samples: `docker compose run --rm triage`
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.6.0}
+    build: .
+    profiles: ["batch"]
     volumes:
       - verdicts:/data
     environment:
