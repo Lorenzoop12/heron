@@ -32,7 +32,7 @@ def parse_eml(raw: str, email_id: str) -> ParsedEmail:
     ParsedEmail
         The parts of the message that the indicator checks read.
     """
-    msg = message_from_string(raw, policy=policy.default)
+    msg = message_from_string(raw, policy=policy.compat32)  # plain-text headers: never crash
     sender = str(msg.get("From", ""))
     return ParsedEmail(
         email_id=email_id,

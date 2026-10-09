@@ -3,6 +3,8 @@
 import re
 from collections.abc import Callable
 
+from rapidfuzz.distance import Levenshtein
+
 from heron.models import Finding, ParsedEmail
 
 W_URGENCY = 2
@@ -11,8 +13,10 @@ W_PUNYCODE_LINK = 3
 W_BRAND_MISMATCH = 3
 W_AUTH_FAIL = 2
 W_REPLY_TO_MISMATCH = 2
+W_LOOKALIKE_SENDER = 2
 
 BRANDS = ["paypal", "microsoft", "amazon"]
+MAX_LOOKALIKE_DISTANCE = 2
 
 KEYWORDS = [
     "urgent",
@@ -29,6 +33,11 @@ KEYWORDS = [
 ]
 
 _IP_URL_RE = re.compile("https?://[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+")
+
+
+def levenshtein(a: str, b: str) -> int:
+    """Return the number of one-character edits that turn ``a`` into ``b``."""
+    return Levenshtein.distance(a, b)
 
 
 def check_urgency(email: ParsedEmail) -> list[Finding]:
@@ -75,10 +84,22 @@ def check_reply_to(email: ParsedEmail) -> list[Finding]:
     return []
 
 
+def check_lookalike_sender(email: ParsedEmail) -> list[Finding]:
+    """One finding for each part of the sender domain that imitates a brand."""
+    parts = re.split("[.-]", email.from_domain or "")
+    return [
+        Finding("lookalike_sender", f"{part} imitates {brand}", W_LOOKALIKE_SENDER)
+        for part in parts
+        for brand in BRANDS
+        if len(part) >= 4 and 0 < levenshtein(part, brand) <= MAX_LOOKALIKE_DISTANCE
+    ]
+
+
 ALL_CHECKS: tuple[Callable[[ParsedEmail], list[Finding]], ...] = (
     check_urgency,
     check_links,
     check_brand,
     check_auth,
     check_reply_to,
+    check_lookalike_sender,
 )

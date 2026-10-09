@@ -1,11 +1,11 @@
 [project]
 name = "heron"
-version = "0.3.0"
+version = "0.4.0"
 description = "Phishing email triage: parse .eml files, extract indicators, produce a verdict"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"  # SPDX expression (PEP 639)
-dependencies = []  # core stays dependency-free; extras: [api], [ai]
+dependencies = ["rapidfuzz>=3.14"]  # the edit distance of levenshtein(); extras: [api], [ai]
 
 [project.scripts]
 heron = "heron.cli:main"
@@ -13,6 +13,7 @@ heron = "heron.cli:main"
 [dependency-groups]  # developer tools: never published; `uv sync` installs them
 dev = [
   "ruff", "mypy", "pre-commit", "sphinx", "sphinx-rtd-theme",
+  "pytest", "pytest-cov", "hypothesis",
 ]
 
 [build-system]
@@ -35,3 +36,19 @@ select = ["E", "F", "I", "UP", "B", "SIM", "C4", "S"]  # S = security rules (ban
 [tool.mypy]
 strict = true
 files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["heron"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+
+[tool.mutmut]  # mutation testing: `uv add --dev mutmut`, then `uv run mutmut run`
+source_paths = ["src/"]
+also_copy = ["data/"]  # the CLI tests read data/samples
