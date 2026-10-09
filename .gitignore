@@ -14,3 +14,4 @@ docs/_build/
 .env
 .hypothesis/
 mutants/
+coverage.xml

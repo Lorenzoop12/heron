@@ -1,0 +1,14 @@
+# Dependabot opens a pull request when a dependency has a new version.
+# CI runs on each of those PRs, so an update is merged only if the gates pass.
+version: 2
+updates:
+  - package-ecosystem: github-actions  # the actions in .github/workflows/
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: uv  # pyproject.toml + uv.lock
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7  # let a new release settle before proposing it

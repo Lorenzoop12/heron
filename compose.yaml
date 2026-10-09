@@ -1,0 +1,13 @@
+services:
+  triage:
+    # `docker compose build` builds the image here; `docker compose pull` fetches the
+    # published one. CI publishes ghcr.io/<owner>/<repo>: set HERON_IMAGE in .env.
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.5.1}
+    build: .
+    volumes:
+      - verdicts:/data
+    environment:
+      HERON_LOG_LEVEL: INFO
+
+volumes:
+  verdicts:
