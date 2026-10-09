@@ -2,7 +2,7 @@ services:
   api:
     # `docker compose up api` serves the API on http://localhost:8000 (docs: /docs).
     # `docker compose pull` fetches the published image; set HERON_IMAGE in .env.
-    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.6.0}
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.7.0}
     build: .
     entrypoint: ["uvicorn", "heron.api:app", "--host", "0.0.0.0", "--port", "8000"]
     command: []
@@ -21,7 +21,7 @@ services:
 
   triage:
     # the CLI on the bundled samples: `docker compose run --rm triage`
-    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.6.0}
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.7.0}
     build: .
     profiles: ["batch"]
     volumes:
