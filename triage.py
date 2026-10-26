@@ -1,5 +1,3 @@
-# quick phishing checker for the mail export - L. Garcia, march 2025
-# TODO: make this nicer at some point
 import re
 import os
 import sys
@@ -60,7 +58,6 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
         s = 0
 
         frm = header(raw, "From")
-        subj = header(raw, "Subject")
 
         low = raw.lower()
         for kw in KEYWORDS:
