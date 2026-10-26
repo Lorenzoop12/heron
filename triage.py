@@ -99,6 +99,8 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples"):
         scores[fn] = s
         verdicts.append((fn, compute_verdict(s), s))
 
+    return verdicts
+
 def report(verdicts):
     """Prints the verdicts and saves them to the results file."""
 
