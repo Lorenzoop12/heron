@@ -20,8 +20,27 @@ W_PUNYCODE_LINK = 3
 
 W_KEYWORD = 1
 
+BRANDS = ["paypal", "microsoft", "amazon"]
+
 KEYWORDS = ["urgent", "verify", "suspended", "password", "expires", "act now",
             "congratulations", "winner", "claim", "immediately", "gift card"]
+
+def header(raw, name):
+    """Returns the value of the first occurrence of the 'name:' pattern in the
+    email header, or '?' if missing."""
+
+    match = re.search(name + ": (.*)", raw)
+    if match is None:
+        return "?"
+    return match.group(1)
+
+def sender_domain(address):
+    """Returns the domain of an email address, or '?' if missing."""
+
+    match = re.search("@([a-zA-Z0-9.-]+)", address)
+    if match is None:
+        return "?"
+    return match.group(1)
 
 def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagged=[]):
 
@@ -40,17 +59,8 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
 
         s = 0
 
-        frm = re.search("From: (.*)", raw)
-        if frm is None:
-            frm = "?"
-        else:
-            frm = frm.group(1)
-
-        subj = re.search("Subject: (.*)", raw)
-        if subj is None:
-            subj = "?"
-        else:
-            subj = subj.group(1)
+        frm = header(raw, "From")
+        subj = header(raw, "Subject")
 
         low = raw.lower()
         for kw in KEYWORDS:
@@ -63,24 +73,22 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
                 s = s + W_IP_LINK  # ip address url, very bad
             if "xn--" in u:
                 s = s + W_PUNYCODE_LINK
+
         # sender says paypal/microsoft/amazon but domain is weird
-        if "paypal" in frm.lower() and "paypal.com" not in frm.lower():
-            s = s + W_BRAND_MISMATCH
-        if "microsoft" in frm.lower() and "microsoft.com" not in frm.lower():
-            s = s + W_BRAND_MISMATCH
-        if "amazon" in frm.lower() and "amazon.com" not in frm.lower():
-            s = s + W_BRAND_MISMATCH
+
+        for brand in BRANDS:
+            if brand in frm.lower() and f"{brand}.com" not in frm.lower():
+                s = s + W_BRAND_MISMATCH
+
         if "spf=fail" in low or "dmarc=fail" in low:
             s = s + W_AUTH_FAIL
+
         # reply-to different from from
-        try:
-            rt = re.search("Reply-To: (.*)", raw).group(1)
-            m1 = re.search("@([a-zA-Z0-9.-]+)", frm).group(1)
-            m2 = re.search("@([a-zA-Z0-9.-]+)", rt).group(1)
-            if m1 != m2:
+
+            from_domain = sender_domain(frm)
+            reply_domain = sender_domain(header(raw, "Reply-To"))
+            if from_domain and reply_domain and from_domain != reply_domain:
                 s = s + W_REPLY_TO_MISMATCH
-        except:
-            pass
 
         scores[fn] = s
         if s >= PHISHING_TRESHOLD:
