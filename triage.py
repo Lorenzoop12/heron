@@ -39,14 +39,19 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
             raw = f.read()
 
         s = 0
-        try:
-            frm = re.search("From: (.*)", raw).group(1)
-        except:
+
+        frm = re.search("From: (.*)", raw)
+        if frm is None:
             frm = "?"
-        try:
-            subj = re.search("Subject: (.*)", raw).group(1)
-        except:
+        else:
+            frm = frm.group(1)
+
+        subj = re.search("Subject: (.*)", raw)
+        if subj is None:
             subj = "?"
+        else:
+            subj = subj.group(1)
+
         low = raw.lower()
         for kw in KEYWORDS:
             if kw in low:
@@ -76,6 +81,7 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
                 s = s + W_REPLY_TO_MISMATCH
         except:
             pass
+
         scores[fn] = s
         if s >= PHISHING_TRESHOLD:
             verdicts.append((fn, "PHISHING", s))
@@ -96,4 +102,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("You have to pass a folder as argument")
         sys.exit(2)
-    check_mail(sys.argv[1])
+    try:
+        check_mail(sys.argv[1])
+    except FileNotFoundError:
+        print("Error: folder not found", file=sys.stderr)
