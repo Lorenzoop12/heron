@@ -40,10 +40,19 @@ def sender_domain(address):
         return "?"
     return match.group(1)
 
-def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagged=[]):
+def compute_verdict(score):
+    """Map a score to a verdict."""
 
-    if flagged is None:
-        flagged = []
+    if score >= PHISHING_TRESHOLD:
+        return "PHISHING"
+    elif score >= SUSPICIOUS_TRESHOLD:
+        return "suspicious"
+    else:
+        return "ok"
+
+def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples"):
+    """Stores every email file in the given folder.
+    Returns (file name, verditct, score) tuples."""
 
     scores = {}
     verdicts = []
@@ -88,26 +97,25 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples", flagge
                 s = s + W_REPLY_TO_MISMATCH
 
         scores[fn] = s
-        if s >= PHISHING_TRESHOLD:
-            verdicts.append((fn, "PHISHING", s))
-            flagged.append(fn)
-        elif s >= SUSPICIOUS_TRESHOLD:
-            verdicts.append((fn, "suspicious", s))
-        else:
-            verdicts.append((fn, "ok", s))
-    print("checked", len(scores), "mails")
+        verdicts.append((fn, compute_verdict(s), s))
+
+def report(verdicts):
+    """Prints the verdicts and saves them to the results file."""
+
+    print("checked", len(verdicts), "mails")
+
     for v in verdicts:
         print(" ", v[0], "->", v[1], "(score", str(v[2]) + ")")
-
-    with open("results.txt", "w") as out:
+    with open("results.txt", "a") as out:
         out.write(str(verdicts))
-    print("flagged:", flagged)
+    print("flagged:", [v[0] for v in verdicts if v[1] == "PHISHING"])
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("You have to pass a folder as argument")
         sys.exit(2)
     try:
-        check_mail(sys.argv[1])
+        verdicts = check_mail(sys.argv[1])
+        report(verdicts)
     except FileNotFoundError:
         print("Error: folder not found", file=sys.stderr)
