@@ -1,3 +1,5 @@
+from email import message_from_string, policy
+from email.utils import parseaddr
 import re
 import os
 import sys
@@ -23,22 +25,13 @@ BRANDS = ["paypal", "microsoft", "amazon"]
 KEYWORDS = ["urgent", "verify", "suspended", "password", "expires", "act now",
             "congratulations", "winner", "claim", "immediately", "gift card"]
 
-def header(raw, name):
-    """Returns the value of the first occurrence of the 'name:' pattern in the
-    email header, or '?' if missing."""
-
-    match = re.search(name + ": (.*)", raw)
-    if match is None:
-        return "?"
-    return match.group(1)
-
-def sender_domain(address):
+def sender_domain(header_value):
     """Returns the domain of an email address, or '?' if missing."""
 
-    match = re.search("@([a-zA-Z0-9.-]+)", address)
-    if match is None:
-        return "?"
-    return match.group(1)
+    _, address = parseaddr(header_value)
+    if "@" not in address:
+        return None
+    return address.split("@", 1)[1].lower()
 
 def compute_verdict(score):
     """Map a score to a verdict."""
@@ -49,6 +42,61 @@ def compute_verdict(score):
         return "suspicious"
     else:
         return "ok"
+
+def keyword_score(raw):
+    """Assign one point for each keyword found in the email."""
+
+    low = raw.lower()
+    return sum(W_KEYWORD for kw in KEYWORDS if kw in low)
+
+def link_score(raw):
+    """Assign one point for each link found in the email."""
+
+    s = 0
+    urls = re.findall("https?://[^\\s\"'<>]+", raw)
+    for u in urls:
+        if re.match("https?://[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+", u):
+            s = s + W_IP_LINK  # ip address url, very bad
+        if "xn--" in u:
+            s = s + W_PUNYCODE_LINK
+    return s
+
+def brand_score(frm):
+    """Assign one point for each brand found in the email."""
+
+    s = 0
+    for brand in BRANDS:
+        if brand in frm.lower() and f"{brand}.com" not in frm.lower():
+            s = s + W_BRAND_MISMATCH
+    return s
+
+def auth_score(raw):
+    """Assign one point when SPF or DMARC fails."""
+
+    low = raw.lower()
+    if "spf" not in low and "dmarc" not in low:
+        return W_AUTH_FAIL
+    return 0
+
+def reply_to_score(frm, reply_to):
+    """Assign one point when sender and reply-to fields mismatch."""
+
+    from_domain = sender_domain(frm)
+    reply_domain = sender_domain(reply_to)
+
+    if from_domain and reply_domain and from_domain != reply_domain:
+        return W_REPLY_TO_MISMATCH
+    return 0
+
+def score_email(raw):
+    """Computes the score based on the indicators, given an email message."""
+
+    msg = message_from_string(raw, policy=policy.default)
+    frm = str(msg.get("From", ""))
+    reply_to = str(msg.get("Reply-To", ""))
+
+    score = (keyword_score(raw) + link_score(raw) + brand_score(frm) + auth_score(raw) + reply_to_score(frm, reply_to))
+    return score
 
 def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples"):
     """Stores every email file in the given folder.
@@ -64,37 +112,7 @@ def check_mail(folder="/Users/Utente/PycharmProjects/heron/data/samples"):
         with open(folder + "/" + fn, encoding="utf-8", errors="ignore") as f:
             raw = f.read()
 
-        s = 0
-
-        frm = header(raw, "From")
-
-        low = raw.lower()
-        for kw in KEYWORDS:
-            if kw in low:
-                s = s + W_KEYWORD
-        # links that look bad
-        urls = re.findall("https?://[^\\s\"'<>]+", raw)
-        for u in urls:
-            if re.match("https?://[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+", u):
-                s = s + W_IP_LINK  # ip address url, very bad
-            if "xn--" in u:
-                s = s + W_PUNYCODE_LINK
-
-        # sender says paypal/microsoft/amazon but domain is weird
-
-        for brand in BRANDS:
-            if brand in frm.lower() and f"{brand}.com" not in frm.lower():
-                s = s + W_BRAND_MISMATCH
-
-        if "spf=fail" in low or "dmarc=fail" in low:
-            s = s + W_AUTH_FAIL
-
-        # reply-to different from from
-
-            from_domain = sender_domain(frm)
-            reply_domain = sender_domain(header(raw, "Reply-To"))
-            if from_domain and reply_domain and from_domain != reply_domain:
-                s = s + W_REPLY_TO_MISMATCH
+        s = score_email(raw)
 
         scores[fn] = s
         verdicts.append((fn, compute_verdict(s), s))
