@@ -1,36 +1,45 @@
-"""Launch heron with ``python -m heron <folder>``."""
+"""Command-line interface for running Heron email triage."""
 
 import argparse
 import json
 import os
 import sys
 from dataclasses import asdict
+import re # noqa: F401
 
-from scorer import triage
-from parser import parse_eml
-from models import TriageResult
+from heron.scorer import triage
+from heron.parser import parse_eml
+from heron.models import TriageResult
+
 
 def build_parser() -> argparse.ArgumentParser:
-    """Returns the parser of the CLI arguments."""
+    """Build the command-line argument parser.
 
-    parser = argparse.ArgumentParser(
-        prog="heron",
-        description="Triage of phishing."
-    )
-    parser.add_argument(
-        "folder",
-                    help="A folder containing the email files."
-    )
-    parser.add_argument(
-        "--json",
-        action="store_true",
-        help="machine-readable output"
-    )
+    Returns
+    -------
+    argparse.ArgumentParser
+        Parser configured for the Heron CLI.
+    """
+
+    parser = argparse.ArgumentParser(prog="heron", description="Triage of phishing.")
+    parser.add_argument("folder", help="A folder containing the email files.")
+    parser.add_argument("--json", action="store_true", help="machine-readable output")
     return parser
 
+
 def check_mail(folder: str) -> list[TriageResult]:
-    """Stores every email file in the given folder.
-    Returns (file name, verditct, score) tuples."""
+    """Run triage on all ``.eml`` files in a folder.
+
+    Parameters
+    ----------
+    folder : str
+        Path to the folder containing email files.
+
+    Returns
+    -------
+    list[TriageResult]
+        Triage results for every ``.eml`` file found.
+    """
 
     verdicts = []
 
@@ -47,15 +56,29 @@ def check_mail(folder: str) -> list[TriageResult]:
 
     return verdicts
 
+
 def report(verdicts: list[TriageResult]) -> None:
-    """Prints the verdicts and saves them to the results file."""
+    """Print triage results to standard output.
+
+    Parameters
+    ----------
+    verdicts : list[TriageResult]
+        Triage results to display.
+    """
 
     for v in verdicts:
         print(f"{v.email_id:<28} {v.verdict} score={v.score}")
 
 
 def main(argv: list[str] | None = None):
-    """Run the triage on the given folder."""
+    """Run the CLI entrypoint.
+
+    Parameters
+    ----------
+    argv : list[str] | None, optional
+        Argument list passed to the parser. If ``None``, arguments are
+        read from ``sys.argv``.
+    """
 
     parser = build_parser()
     args = parser.parse_args(argv)
