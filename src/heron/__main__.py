@@ -1,5 +1,5 @@
 """Launch heron with ``python -m heron <folder>``."""
 
-from cli import main
+from heron.cli import main
 
 main()

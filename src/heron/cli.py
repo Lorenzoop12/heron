@@ -70,7 +70,7 @@ def report(verdicts: list[TriageResult]) -> None:
         print(f"{v.email_id:<28} {v.verdict} score={v.score}")
 
 
-def main(argv: list[str] | None = None):
+def main(argv: list[str] | None = None): #type: ignore
     """Run the CLI entrypoint.
 
     Parameters
