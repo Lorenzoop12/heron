@@ -5,14 +5,23 @@ description = "Phishing email triage: parse .eml files, extract indicators, prod
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"  # SPDX expression (PEP 639)
-dependencies = []  # core stays dependency-free; extras: [api], [ai]
+dependencies = [
+    "pytest>=9.2.0",
+]  # core stays dependency-free; extras: [api], [ai]
 
 [project.scripts]
 heron = "heron.cli:main"
 
 [dependency-groups]  # developer tools: never published; `uv sync` installs them
 dev = [
-  "ruff", "mypy", "pre-commit", "sphinx", "sphinx-rtd-theme",
+  "ruff",
+  "mypy",
+  "pre-commit",
+  "sphinx",
+  "sphinx-rtd-theme",
+  "pytest>=9.2.0",
+  "pytest-cov>=7.1.0",
+  "hypothesis>=6.170.14",
 ]
 
 [build-system]
