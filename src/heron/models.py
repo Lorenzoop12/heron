@@ -42,11 +42,3 @@ class TriageResult:
     score: int
     verdict: Verdict
     findings: tuple[Finding, ...]
-
-@dataclass(frozen=True)
-class Finding:
-    """One indicator that fired, and the points it adds to the score."""
-
-    code: str
-    detail: str
-    weight: int

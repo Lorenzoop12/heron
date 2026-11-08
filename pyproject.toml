@@ -5,9 +5,7 @@ description = "Phishing email triage: parse .eml files, extract indicators, prod
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"  # SPDX expression (PEP 639)
-dependencies = [
-    "pytest>=9.2.0",
-]  # core stays dependency-free; extras: [api], [ai]
+dependencies = []  # core stays dependency-free; extras: [api], [ai]
 
 [project.scripts]
 heron = "heron.cli:main"
@@ -44,3 +42,7 @@ select = ["E", "F", "I", "UP", "B", "SIM", "C4", "S"]  # S = security rules (ban
 [tool.mypy]
 strict = true
 files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

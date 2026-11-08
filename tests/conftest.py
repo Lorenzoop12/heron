@@ -3,9 +3,11 @@ import pytest
 from heron.models import ParsedEmail
 from tests.helpers import make_email
 
+
 @pytest.fixture
 def benign_email() -> ParsedEmail:
     return make_email()
+
 
 @pytest.fixture
 def phishing_email() -> ParsedEmail:
