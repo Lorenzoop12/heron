@@ -5,7 +5,9 @@ description = "Phishing email triage: parse .eml files, extract indicators, prod
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"  # SPDX expression (PEP 639)
-dependencies = []  # core stays dependency-free; extras: [api], [ai]
+dependencies = [
+    "rapidfuzz>=3.14.6",
+]  # core stays dependency-free; extras: [api], [ai]
 
 [project.scripts]
 heron = "heron.cli:main"
