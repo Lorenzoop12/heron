@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="code's syntax adjusted">
+      <change afterPath="$PROJECT_DIR$/tests/test_doubles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/Utente/PycharmProjects/heron" value="3KN4FHRaItSDnSbZ4W6j2PG8NXt" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="116" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Lorenzoop12&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Lorenzoop12/heron.git&quot;,
+    &quot;accountId&quot;: &quot;30ceaa0c-3ce4-4b2e-802e-9614a2aeb556&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.509488069762846" />
+      <entry key="MS500" value="4.082141968717442" />
+      <entry key="S2" value="7.397269564969312" />
+      <entry key="S5" value="8.831972876317309" />
+      <entry key="S10" value="9.957124850754699" />
+      <entry key="S30" value="14.620431858799764" />
+      <entry key="S60" value="19.068895008381702" />
+      <entry key="M2" value="24.227365407935533" />
+      <entry key="M5" value="38.66880163348657" />
+      <entry key="M10" value="61.12476269624189" />
+      <entry key="M15" value="85.32580308782151" />
+      <entry key="M30" value="165.46435660949004" />
+      <entry key="H1" value="316.00282793706316" />
+      <entry key="H2" value="575.26181997958" />
+      <entry key="H4" value="948.2383591531639" />
+      <entry key="D1" value="1765.8443550606423" />
+      <entry key="W1" value="2014.6173306760313" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.556175954152002E-139" />
+      <entry key="MS500" value="1.7642928932663547E-28" />
+      <entry key="S2" value="1.8019153370143034E-7" />
+      <entry key="S5" value="0.004144193313230815" />
+      <entry key="S10" value="0.13053307684868762" />
+      <entry key="S30" value="1.4247208787143237" />
+      <entry key="S60" value="2.654714392115762" />
+      <entry key="M2" value="3.798326207844968" />
+      <entry key="M5" value="6.160004296294213" />
+      <entry key="M10" value="9.033816831261284" />
+      <entry key="M15" value="11.147625714215698" />
+      <entry key="M30" value="15.661449061717708" />
+      <entry key="H1" value="21.636713002118412" />
+      <entry key="H2" value="31.758835885999915" />
+      <entry key="H4" value="46.99516644041806" />
+      <entry key="D1" value="79.03366849069435" />
+      <entry key="W1" value="88.29548430451867" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.4307844680924282" />
+      <entry key="MS500" value="4.021874002978977" />
+      <entry key="S2" value="7.352635809324343" />
+      <entry key="S5" value="8.809933282286474" />
+      <entry key="S10" value="10.050137470209677" />
+      <entry key="S30" value="15.94261323725293" />
+      <entry key="S60" value="21.618249623147634" />
+      <entry key="M2" value="27.94397179164705" />
+      <entry key="M5" value="44.77291583402615" />
+      <entry key="M10" value="70.11605006683533" />
+      <entry key="M15" value="96.43685205705569" />
+      <entry key="M30" value="181.09714242116183" />
+      <entry key="H1" value="337.6160312845298" />
+      <entry key="H2" value="606.9970535835654" />
+      <entry key="H4" value="995.2104876125524" />
+      <entry key="D1" value="1844.869663944263" />
+      <entry key="W1" value="2102.9114219425805" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3KN4FHRaItSDnSbZ4W6j2PG8NXt" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Python tests in test_cli.py.executor": "Debug",
+    "Python tests.pytest in test_doubles.py.executor": "Debug",
+    "Python.attack.executor": "Run",
+    "Python.challenge.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "lab-02-start",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utente\PycharmProjects\heron\src\heron" />
+      <recent name="C:\Users\Utente\PycharmProjects\heron" />
+      <recent name="C:\Users\Utente\PycharmProjects\heron\src" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50341a9f1f9c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.26222.68" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="" />
+      <created>1791384586857</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791384586857</updated>
+    </task>
+    <task id="LOCAL-00001" summary="start">
+      <option name="closed" value="true" />
+      <created>1791452706446</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1791452706446</updated>
+    </task>
+    <task id="LOCAL-00002" summary="STEP">
+      <option name="closed" value="true" />
+      <created>1791457860144</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1791457860144</updated>
+    </task>
+    <task id="LOCAL-00003" summary="step 1 and step 2">
+      <option name="closed" value="true" />
+      <created>1791457976971</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1791457976971</updated>
+    </task>
+    <task id="LOCAL-00004" summary="step 1 and step 2">
+      <option name="closed" value="true" />
+      <created>1791458182367</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1791458182367</updated>
+    </task>
+    <task id="LOCAL-00005" summary="remove mutable default arguments">
+      <option name="closed" value="true" />
+      <created>1791458341476</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1791458341476</updated>
+    </task>
+    <task id="LOCAL-00006" summary="replace global variables with local ones">
+      <option name="closed" value="true" />
+      <created>1791458535780</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1791458535780</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: open files inside context manager">
+      <option name="closed" value="true" />
+      <created>1793004950699</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1793004950699</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: improved error handling">
+      <option name="closed" value="true" />
+      <created>1793006715469</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1793006715470</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix: avoided code duplication">
+      <option name="closed" value="true" />
+      <created>1793008313342</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1793008313342</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix: removed dead code">
+      <option name="closed" value="true" />
+      <created>1793008440670</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1793008440670</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix: code is more understandable">
+      <option name="closed" value="true" />
+      <created>1793009665845</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1793009665845</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix: code is more understandable (2)">
+      <option name="closed" value="true" />
+      <created>1793009802442</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1793009802442</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: separation of concerns">
+      <option name="closed" value="true" />
+      <created>1793200662035</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1793200662035</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixes and refactoring: added modularity, type hints, models and enumeration; improved information hiding">
+      <option name="closed" value="true" />
+      <created>1793439953590</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1793439953590</updated>
+    </task>
+    <task id="LOCAL-00015" summary="use argparse to handle CLI arguments">
+      <option name="closed" value="true" />
+      <created>1793610365191</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1793610365191</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add pyproject.toml">
+      <option name="closed" value="true" />
+      <created>1793613040405</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1793613040405</updated>
+    </task>
+    <task id="LOCAL-00017" summary="configure ruff, add sphinx docs and some docstrings">
+      <option name="closed" value="true" />
+      <created>1793805783538</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1793805783538</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add pre commit hook">
+      <option name="closed" value="true" />
+      <created>1793809196918</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1793809196918</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add pre commit hook">
+      <option name="closed" value="true" />
+      <created>1793876764288</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1793876764288</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add tests that uses pytest">
+      <option name="closed" value="true" />
+      <created>1793880747955</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1793880747955</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add tests that uses pytest (2)">
+      <option name="closed" value="true" />
+      <created>1794135212921</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1794135212922</updated>
+    </task>
+    <task id="LOCAL-00022" summary="code's syntax adjusted">
+      <option name="closed" value="true" />
+      <created>1794135249885</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1794135249885</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start" />
+    <MESSAGE value="STEP" />
+    <MESSAGE value="step 1 and step 2" />
+    <MESSAGE value="remove mutable default arguments" />
+    <MESSAGE value="replace global variables with local ones" />
+    <MESSAGE value="fix: open files inside context manager" />
+    <MESSAGE value="fix: improved error handling" />
+    <MESSAGE value="fix: avoided code duplication" />
+    <MESSAGE value="fix: removed dead code" />
+    <MESSAGE value="fix: code is more understandable" />
+    <MESSAGE value="fix: code is more understandable (2)" />
+    <MESSAGE value="fix: separation of concerns" />
+    <MESSAGE value="fixes and refactoring: added modularity, type hints, models and enumeration; improved information hiding" />
+    <MESSAGE value="use argparse to handle CLI arguments" />
+    <MESSAGE value="add pyproject.toml" />
+    <MESSAGE value="configure ruff, add sphinx docs and some docstrings" />
+    <MESSAGE value="add pre commit hook" />
+    <MESSAGE value="add tests that uses pytest" />
+    <MESSAGE value="add tests that uses pytest (2)" />
+    <MESSAGE value="code's syntax adjusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="code's syntax adjusted" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/test_doubles.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
