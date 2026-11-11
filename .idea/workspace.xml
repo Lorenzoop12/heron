@@ -7,10 +7,7 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="code's syntax adjusted">
-      <change afterPath="$PROJECT_DIR$/tests/test_doubles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
-    </list>
+    <list default="true" id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="add cli test and monkeypatch example" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,61 +49,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.509488069762846" />
-      <entry key="MS500" value="4.082141968717442" />
-      <entry key="S2" value="7.397269564969312" />
-      <entry key="S5" value="8.831972876317309" />
-      <entry key="S10" value="9.957124850754699" />
-      <entry key="S30" value="14.620431858799764" />
-      <entry key="S60" value="19.068895008381702" />
-      <entry key="M2" value="24.227365407935533" />
-      <entry key="M5" value="38.66880163348657" />
-      <entry key="M10" value="61.12476269624189" />
-      <entry key="M15" value="85.32580308782151" />
-      <entry key="M30" value="165.46435660949004" />
-      <entry key="H1" value="316.00282793706316" />
-      <entry key="H2" value="575.26181997958" />
-      <entry key="H4" value="948.2383591531639" />
-      <entry key="D1" value="1765.8443550606423" />
-      <entry key="W1" value="2014.6173306760313" />
+      <entry key="MS100" value="1.0161682604674234" />
+      <entry key="MS500" value="1.7076868019767282" />
+      <entry key="S2" value="3.4975340694495327" />
+      <entry key="S5" value="5.342725964679339" />
+      <entry key="S10" value="7.125807485844475" />
+      <entry key="S30" value="10.24355769055351" />
+      <entry key="S60" value="14.856088960020502" />
+      <entry key="M2" value="22.626066117683962" />
+      <entry key="M5" value="40.091399641936945" />
+      <entry key="M10" value="64.09403764103715" />
+      <entry key="M15" value="88.70737184591735" />
+      <entry key="M30" value="168.93746034468853" />
+      <entry key="H1" value="319.74692368782723" />
+      <entry key="H2" value="579.6257180427901" />
+      <entry key="H4" value="953.7557714561298" />
+      <entry key="D1" value="1775.1391731576693" />
+      <entry key="W1" value="2025.339313508831" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.556175954152002E-139" />
-      <entry key="MS500" value="1.7642928932663547E-28" />
-      <entry key="S2" value="1.8019153370143034E-7" />
-      <entry key="S5" value="0.004144193313230815" />
-      <entry key="S10" value="0.13053307684868762" />
-      <entry key="S30" value="1.4247208787143237" />
-      <entry key="S60" value="2.654714392115762" />
-      <entry key="M2" value="3.798326207844968" />
-      <entry key="M5" value="6.160004296294213" />
-      <entry key="M10" value="9.033816831261284" />
-      <entry key="M15" value="11.147625714215698" />
-      <entry key="M30" value="15.661449061717708" />
-      <entry key="H1" value="21.636713002118412" />
-      <entry key="H2" value="31.758835885999915" />
-      <entry key="H4" value="46.99516644041806" />
-      <entry key="D1" value="79.03366849069435" />
-      <entry key="W1" value="88.29548430451867" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.912798085759889E-101" />
+      <entry key="S2" value="1.371007948921402E-25" />
+      <entry key="S5" value="2.3440250147608313E-10" />
+      <entry key="S10" value="3.104428724942312E-5" />
+      <entry key="S30" value="0.08827075234460499" />
+      <entry key="S60" value="0.6607867469525618" />
+      <entry key="M2" value="1.8950209689796136" />
+      <entry key="M5" value="4.6643348325370395" />
+      <entry key="M10" value="7.860960835759943" />
+      <entry key="M15" value="10.160582659800257" />
+      <entry key="M30" value="14.952026552682321" />
+      <entry key="H1" value="21.140991087249187" />
+      <entry key="H2" value="31.39291212741349" />
+      <entry key="H4" value="46.723644049357056" />
+      <entry key="D1" value="78.9573796012453" />
+      <entry key="W1" value="88.28330368612802" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4307844680924282" />
-      <entry key="MS500" value="4.021874002978977" />
-      <entry key="S2" value="7.352635809324343" />
-      <entry key="S5" value="8.809933282286474" />
-      <entry key="S10" value="10.050137470209677" />
-      <entry key="S30" value="15.94261323725293" />
-      <entry key="S60" value="21.618249623147634" />
-      <entry key="M2" value="27.94397179164705" />
-      <entry key="M5" value="44.77291583402615" />
-      <entry key="M10" value="70.11605006683533" />
-      <entry key="M15" value="96.43685205705569" />
-      <entry key="M30" value="181.09714242116183" />
-      <entry key="H1" value="337.6160312845298" />
-      <entry key="H2" value="606.9970535835654" />
-      <entry key="H4" value="995.2104876125524" />
-      <entry key="D1" value="1844.869663944263" />
-      <entry key="W1" value="2102.9114219425805" />
+      <entry key="MS100" value="0.9550324178829251" />
+      <entry key="MS500" value="1.689388653675669" />
+      <entry key="S2" value="3.4885300405175803" />
+      <entry key="S5" value="5.336602755198829" />
+      <entry key="S10" value="7.121371177870094" />
+      <entry key="S30" value="10.323380004677745" />
+      <entry key="S60" value="15.48949435039376" />
+      <entry key="M2" value="24.47970786276326" />
+      <entry key="M5" value="44.713163572122056" />
+      <entry key="M10" value="71.91786371242524" />
+      <entry key="M15" value="98.83453148481267" />
+      <entry key="M30" value="183.86207942391104" />
+      <entry key="H1" value="340.86492241927044" />
+      <entry key="H2" value="610.9952891559507" />
+      <entry key="H4" value="1000.4565052895751" />
+      <entry key="D1" value="1854.0882003306897" />
+      <entry key="W1" value="2113.6212242219503" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -358,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1794135249885</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="add cli test and monkeypatch example">
+      <option name="closed" value="true" />
+      <created>1794407804526</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1794407804526</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,17 +401,7 @@
     <MESSAGE value="add tests that uses pytest" />
     <MESSAGE value="add tests that uses pytest (2)" />
     <MESSAGE value="code's syntax adjusted" />
-    <option name="LAST_COMMIT_MESSAGE" value="code's syntax adjusted" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_doubles.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add cli test and monkeypatch example" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cli test and monkeypatch example" />
   </component>
 </project>

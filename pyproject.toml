@@ -46,3 +46,11 @@ files = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+
+[tool.coverage.run]
+source = ["heron"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
