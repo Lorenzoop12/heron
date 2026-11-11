@@ -12,3 +12,9 @@ htmlcov/
 docs/_build/
 *.db
 .env
+
+.idea/
+
+.hypothesis/
+
+mutants/
