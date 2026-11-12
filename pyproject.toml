@@ -22,6 +22,7 @@ dev = [
   "pytest>=9.2.0",
   "pytest-cov>=7.1.0",
   "hypothesis>=6.170.14",
+  "mutmut>=3.8.1",
 ]
 
 [build-system]
@@ -56,3 +57,7 @@ branch = true
 [tool.coverage.report]
 fail_under = 85
 show_missing = true
+
+[tool.mutmut]
+source_paths = ["src/"]
+also_copy = ["data/"]

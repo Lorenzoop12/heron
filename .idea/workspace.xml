@@ -7,11 +7,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="updated gitignore and add cli test">
-      <change afterPath="$PROJECT_DIR$/tests/test_levenshtein.py" afterDir="false" />
+    <list default="true" id="c53df13f-2840-446e-8167-38be445f2f09" name="Changes" comment="add property-based test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/heron/features.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/heron/features.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +23,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="116" />
+    <option name="cachedIndexableFilesCount" value="134" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -55,61 +53,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000070204746294" />
-      <entry key="MS500" value="1.0931693991749325" />
-      <entry key="S2" value="1.5524864708645656" />
-      <entry key="S5" value="1.8037453146496647" />
-      <entry key="S10" value="2.166819742299381" />
-      <entry key="S30" value="5.003984392151938" />
-      <entry key="S60" value="10.888100751896019" />
-      <entry key="M2" value="22.574144791412202" />
-      <entry key="M5" value="45.53654193315925" />
-      <entry key="M10" value="67.4713560135754" />
-      <entry key="M15" value="87.1434261539209" />
-      <entry key="M30" value="153.4890478502715" />
-      <entry key="H1" value="296.9175821830693" />
-      <entry key="H2" value="562.025702051769" />
-      <entry key="H4" value="957.6481015761369" />
-      <entry key="D1" value="1863.298267105687" />
-      <entry key="W1" value="2146.8027187789166" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000036289912275" />
+      <entry key="S2" value="1.0436481310194556" />
+      <entry key="S5" value="1.2940304541471173" />
+      <entry key="S10" value="1.701706668385024" />
+      <entry key="S30" value="3.7340616531329913" />
+      <entry key="S60" value="10.168704150598002" />
+      <entry key="M2" value="26.68473880865723" />
+      <entry key="M5" value="55.321344503754446" />
+      <entry key="M10" value="78.49913475738084" />
+      <entry key="M15" value="98.73887660283242" />
+      <entry key="M30" value="162.61296939152456" />
+      <entry key="H1" value="300.6418447702367" />
+      <entry key="H2" value="568.0525023377286" />
+      <entry key="H4" value="983.6326227699918" />
+      <entry key="D1" value="1981.8759403784006" />
+      <entry key="W1" value="2304.114912073594" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.291044125892163E-121" />
-      <entry key="MS500" value="9.114747611694659E-25" />
-      <entry key="S2" value="1.0089092602399974E-6" />
-      <entry key="S5" value="0.0054433050107617715" />
-      <entry key="S10" value="0.11743080382246641" />
-      <entry key="S30" value="0.9996017254989085" />
-      <entry key="S60" value="1.738900573865316" />
-      <entry key="M2" value="2.4071258096074626" />
-      <entry key="M5" value="3.3697945049474995" />
-      <entry key="M10" value="4.532573594225309" />
-      <entry key="M15" value="5.953886921707544" />
-      <entry key="M30" value="10.742666899413665" />
-      <entry key="H1" value="18.61227548202742" />
-      <entry key="H2" value="30.628146505157417" />
-      <entry key="H4" value="47.680233008850195" />
-      <entry key="D1" value="84.1875954802493" />
-      <entry key="W1" value="94.99859793488305" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="5.153484201592734E-139" />
+      <entry key="S10" value="7.28965249037894E-70" />
+      <entry key="S30" value="1.165483473190137E-23" />
+      <entry key="S60" value="5.173540915541366E-12" />
+      <entry key="M2" value="3.8365939104683855E-6" />
+      <entry key="M5" value="0.015939772720180892" />
+      <entry key="M10" value="0.33155494900696547" />
+      <entry key="M15" value="1.0590989133936441" />
+      <entry key="M30" value="4.537058207282874" />
+      <entry key="H1" value="12.26345449084585" />
+      <entry key="H2" value="25.23973649930405" />
+      <entry key="H4" value="43.86058222563279" />
+      <entry key="D1" value="85.10065838741885" />
+      <entry key="W1" value="97.65971015522902" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.005448251918675429" />
-      <entry key="MS500" value="0.3847476177284098" />
-      <entry key="S2" value="1.1940946165917434" />
-      <entry key="S5" value="1.6287727658073703" />
-      <entry key="S10" value="2.1695504171832094" />
-      <entry key="S30" value="5.9209576894348865" />
-      <entry key="S60" value="12.559201272523737" />
-      <entry key="M2" value="24.920046872534492" />
-      <entry key="M5" value="48.858600862537216" />
-      <entry key="M10" value="71.96935553739733" />
-      <entry key="M15" value="93.06797433857665" />
-      <entry key="M30" value="164.2071902781513" />
-      <entry key="H1" value="315.5079947945513" />
-      <entry key="H2" value="592.6315341313561" />
-      <entry key="H4" value="1005.3059970686533" />
-      <entry key="D1" value="1947.4773030726844" />
-      <entry key="W1" value="2241.7998721422514" />
+      <entry key="MS100" value="0.9138314502294005" />
+      <entry key="MS500" value="0.9821430909323546" />
+      <entry key="S2" value="1.038746280456374" />
+      <entry key="S5" value="1.2911384447744292" />
+      <entry key="S10" value="1.699568318778442" />
+      <entry key="S30" value="3.7324672073804503" />
+      <entry key="S60" value="10.16687947863392" />
+      <entry key="M2" value="26.68247088054634" />
+      <entry key="M5" value="55.33456963291284" />
+      <entry key="M10" value="78.82359972152415" />
+      <entry key="M15" value="99.78675067544181" />
+      <entry key="M30" value="167.13315071568044" />
+      <entry key="H1" value="312.88614474377295" />
+      <entry key="H2" value="593.2712953094849" />
+      <entry key="H4" value="1027.4715279693685" />
+      <entry key="D1" value="2066.9678124225024" />
+      <entry key="W1" value="2401.7731198586634" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -136,33 +134,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Python tests in test_cli.py.executor": "Debug",
-    "Python tests.pytest in test_doubles.py.executor": "Debug",
-    "Python.attack.executor": "Run",
-    "Python.challenge.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "lab-02-start",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_cli.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest in test_doubles.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.attack.executor&quot;: &quot;Run&quot;,
+    &quot;Python.challenge.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lab-02-start&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utente\PycharmProjects\heron\src\heron" />
@@ -385,7 +383,23 @@
       <option name="project" value="LOCAL" />
       <updated>1794408825755</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="TDD example">
+      <option name="closed" value="true" />
+      <created>1794410619852</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1794410619852</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add property-based test">
+      <option name="closed" value="true" />
+      <created>1794411551862</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1794411551862</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,6 +440,8 @@
     <MESSAGE value="add cli test and monkeypatch example" />
     <MESSAGE value="add coverage measurement" />
     <MESSAGE value="updated gitignore and add cli test" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore and add cli test" />
+    <MESSAGE value="TDD example" />
+    <MESSAGE value="add property-based test" />
+    <option name="LAST_COMMIT_MESSAGE" value="add property-based test" />
   </component>
 </project>
