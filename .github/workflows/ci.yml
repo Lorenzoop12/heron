@@ -18,6 +18,8 @@ jobs:
       - uses: astral-sh/setup-uv@v9.0.0
         with:
           python-version: "3.12"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
       - run: uv sync --locked # checks dependencies coherency between pyproject.toml and uv.lock
       - name: Lint
         run: uv run ruff check . && uv run ruff format --check .
@@ -36,6 +38,8 @@ jobs:
           - uses: astral-sh/setup-uv@v9.0.0
             with:
               python-version: ${{ matrix.python-version }}
+              enable-cache: true
+              cache-dependency-glob: uv.lock
           - run: uv sync --locked
           - name: Tests with coverage
             run: uv run pytest --cov --cov-report=term --cov-report=xml
@@ -47,3 +51,20 @@ jobs:
             with:
               name: coverage-${{ matrix.python-version }}
               path: coverage.xml
+  release:
+    needs: [quality, test]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    steps:
+        - uses: actions/checkout@v7
+        - uses: astral-sh/setup-uv@v9.0.0
+          with:
+            python-version: "3.12"
+        - name: Build heron package
+          run: uv build
+        - name: Create the release
+          env:
+            GH_TOKEN: ${{ github.token }}
+          run: gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --generate-notes
