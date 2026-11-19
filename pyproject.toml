@@ -5,7 +5,11 @@ description = "Phishing email triage: parse .eml files, extract indicators, prod
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"  # SPDX expression (PEP 639)
-dependencies = ["rapidfuzz>=3.14"]  # the edit distance of levenshtein(); extras: [api], [ai]
+dependencies = [
+    "pydantic>=2.14.3",
+    "pydantic-settings>=2.16.3",
+    "rapidfuzz>=3.14",
+]  # the edit distance of levenshtein(); extras: [api], [ai]
 
 [project.scripts]
 heron = "heron.cli:main"

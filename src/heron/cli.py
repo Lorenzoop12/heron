@@ -7,6 +7,10 @@ from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
 
+from pydantic import ValidationError
+from pygments.lexers.robotframework import SETTING
+
+from heron.config import Settings
 from heron.models import TriageResult, Verdict
 from heron.parser import parse_eml
 from heron.scorer import triage
@@ -46,6 +50,11 @@ def report(results: list[TriageResult]) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     """Run the triage on the path given on the command line; return the exit code."""
+    try:
+        Settings()
+    except ValidationError as e:
+        print(f"error: invalid configuration:\n{e}", file=sys.stderr)
+        return 2
     args = build_parser().parse_args(argv)
     try:
         results = check_mail(args.path)
