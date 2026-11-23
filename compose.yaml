@@ -1,0 +1,11 @@
+services:
+  triage:
+    image: heron:dev
+    build: .
+    volumes:
+      - verdicts:/data
+    environment:
+      HERON_LOG_LEVEL: INFO
+
+volumes:
+    verdicts:

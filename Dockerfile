@@ -36,6 +36,7 @@ RUN chown app /data
 USER app
 # Now we execute the app by setting the right path
 ENV PATH="$PATH:/app/.venv/bin"
+ENV HERON_DB=/data/verdicts.db
 ENTRYPOINT ["heron"]
 # Now we want to produce default arguments
 CMD ["/app/data/samples"]
