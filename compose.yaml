@@ -1,6 +1,6 @@
 services:
   triage:
-    image: heron:dev
+    image: ${HERON_IMAGE:-ghcr.io/unica-isde/heron}:${HERON_TAG:-0.5.1}
     build: .
     volumes:
       - verdicts:/data
